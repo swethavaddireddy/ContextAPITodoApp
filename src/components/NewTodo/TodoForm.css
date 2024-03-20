@@ -1,0 +1,19 @@
+.form_container{
+    display: flex;
+    justify-content: space-around;
+}
+.form_container input{
+    padding: 12px;
+    width: 13rem;
+    background-color: rgb(210, 197, 197);
+    color: black;
+    border-radius: 10px;
+border: none;
+}
+.btn{
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgb(20, 112, 148);
+    color: white;
+    border: none;
+}

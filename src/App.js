@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import TodoForm from "./components/NewTodo/TodoForm";
+import { useState } from "react";
 import './App.css';
+import TodoList from "./components/TodoList/TodoList";
+
 
 function App() {
+  const [todoList, setTodoList] = useState([]);
+  const [completedTodos, setCompletedTodos] = useState([])
+
+
+  const addTodoHandler = (todo) => {
+    const updatedTodos = [...todoList, todo];
+    setTodoList(updatedTodos);
+  }
+
+  const deleteTodoHandler = (todoItem) => {
+    todoItem.completed ? setCompletedTodos(completedTodos.filter((todo) => todo.id !== todoItem.id)) :
+      setTodoList(todoList.filter(todo => todo.id !== todoItem.id))
+  }
+
+  const completedTodo = (completeTodo) => {
+    setCompletedTodos([...completedTodos, completeTodo])
+    setTodoList(todoList.filter(todo => todo.id !== completeTodo.id))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="container">
+        <h1>Todo List</h1>
+        <TodoForm addTodo={addTodoHandler} />
+        <TodoList todoList={todoList} completedTodos={completedTodos} deleteTodo={deleteTodoHandler} completedTodoHandler={completedTodo} />
+      </div>
     </div>
   );
 }

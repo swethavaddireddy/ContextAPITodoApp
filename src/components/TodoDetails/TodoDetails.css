@@ -1,0 +1,23 @@
+.list_details{
+    display: flex;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    justify-content: space-between;
+    
+    }
+    .list_item{
+        display: flex;
+        flex-direction: column;
+        padding: 4px;
+    }
+    .name{
+        border: none;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .list_btns{
+        display: flex;
+        padding: 30px;
+        gap: 5px;
+    }
+    
