@@ -8,8 +8,9 @@
     background-color: rgb(210, 197, 197);
     color: black;
     border-radius: 10px;
-border: none;
+    border: none;
 }
+
 .btn{
     padding: 10px;
     border-radius: 20px;

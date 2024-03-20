@@ -26,6 +26,7 @@ const TodoDetails = ({ todo, deletedTodo, completedTodo }) => {
             payload: completedTodo
         })
     }
+
     return (
         <div className='list_details' key={todo.id}>
             <div className='list_item'>

@@ -3,7 +3,7 @@ import { v4 as uuidV4 } from 'uuid';
 import './TodoForm.css';
 import { TodoState } from '../Context/Context';
 
-const TodoForm = (props) => {
+const TodoForm = () => {
 
     const { state, dispatch } = TodoState();
     const [todo, setTodo] = useState({
@@ -37,6 +37,7 @@ const TodoForm = (props) => {
             description: ''
         });
     }
+
     return (
         <form className='form_container'>
             <input type='text' placeholder='enter the todo name' name='name' value={todo?.name} onChange={onChangeHandler} />

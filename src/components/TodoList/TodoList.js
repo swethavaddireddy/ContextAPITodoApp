@@ -13,6 +13,7 @@ const TodoList = () => {
             <button className='todo' onClick={() => setChecked(false)}>To Do</button>
             <button className='completed' onClick={() => setChecked(true)}>Completed</button>
         </div>
+
         {!checked ?
             (
                 <div className='list_container'>
