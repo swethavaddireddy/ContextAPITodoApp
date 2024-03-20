@@ -5,7 +5,7 @@ import { PencilSquare } from 'react-bootstrap-icons';
 import './TodoDetails.css';
 import { TodoState } from '../Context/Context';
 
-const TodoDetails = () => {
+const TodoDetails = ({todo}) => {
 
     const { state, dispatch } = TodoState();
 
