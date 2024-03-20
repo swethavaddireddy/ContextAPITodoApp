@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
 import './TodoList.css';
 import TodoDetails from '../TodoDetails/TodoDetails';
+import { TodoState } from '../Context/Context';
 
-const TodoList = (props) => {
+const TodoList = () => {
 
-    const { todoList, completedTodos, deleteTodo, completedTodoHandler } = props;
     const [checked, setChecked] = useState(false);
+    const { state: { todoList, completedTodos }, dispatch } = TodoState();
 
-    const deletedTodo = (todo) => {
-        deleteTodo(todo)
-    }
-    const completedTodo = (todo) => {
-        completedTodoHandler({ ...todo, completed: true });
-        setChecked(true);
-    }
     return (<>
         <div className='btn_container'>
             <button className='todo' onClick={() => setChecked(false)}>To Do</button>
@@ -23,13 +17,13 @@ const TodoList = (props) => {
             (
                 <div className='list_container'>
                     {todoList.map(todo => (
-                        <TodoDetails todo={todo} deletedTodo={deletedTodo} completedTodo={completedTodo} />
+                        <TodoDetails todo={todo} />
                     ))}
                 </div>
             ) : (
                 <div className='list_container'>
                     {completedTodos.map((todo) => (
-                        <TodoDetails todo={todo} deletedTodo={deletedTodo} completedTodo={completedTodo} />
+                        <TodoDetails todo={todo} />
                     ))}
                 </div>
             )

@@ -3,15 +3,28 @@ import { Trash } from 'react-bootstrap-icons';
 import { Check } from 'react-bootstrap-icons';
 import { PencilSquare } from 'react-bootstrap-icons';
 import './TodoDetails.css';
+import { TodoState } from '../Context/Context';
 
 const TodoDetails = ({ todo, deletedTodo, completedTodo }) => {
 
-    const deletedTodoHandler = (todo) => {
-        deletedTodo(todo);
-    }
+    const { state, dispatch } = TodoState();
 
+    const deletedTodoHandler = (todo) => {
+        dispatch({
+            type: 'DELETE_TODO',
+            payload: todo.id
+        })
+    }
     const completeTodoHandler = (todo) => {
-        completedTodo(todo);
+        console.log(todo)
+        let completedTodo = {
+            ...todo,
+            completed: true
+        }
+        dispatch({
+            type: 'COMPLETE_TODO',
+            payload: completedTodo
+        })
     }
     return (
         <div className='list_details' key={todo.id}>

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import './TodoForm.css';
+import { TodoState } from '../Context/Context';
 
 const TodoForm = (props) => {
-    const { addTodo } = props;
+
+    const { state, dispatch } = TodoState();
     const [todo, setTodo] = useState({
         name: '',
         description: ''
@@ -25,7 +27,11 @@ const TodoForm = (props) => {
             id: uuidV4(),
             completed: false
         }
-        addTodo(newTodo);
+        console.log(newTodo)
+        dispatch({
+            type: 'ADD_TODO',
+            payload: newTodo
+        })
         setTodo({
             name: '',
             description: ''
